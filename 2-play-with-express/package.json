@@ -1,0 +1,21 @@
+{
+  "name": "play-with-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "4.9",
+    "hbs": "^4.2.0",
+    "mongodb": "^4.4.0",
+    "morgan": "^1.10.0"
+  }
+}

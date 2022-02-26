@@ -9,7 +9,7 @@ httpServer.on('request', (req, res) => {
 
 
     //------------------------------------------------------
-    // blocking IO
+    // blocking-IO
     //------------------------------------------------------
     // const pdf = fs.readFileSync('./PPT/all-levels node.pdf')
     // res.writeHead(200, {
@@ -19,7 +19,7 @@ httpServer.on('request', (req, res) => {
     // res.end();
 
     //------------------------------------------------------
-    // Non-blocking/Async IO ( without streams )
+    // Non-blocking/Async IO
     //------------------------------------------------------
     // fs.readFile('./PPT/all-levels node.pdf', (err, pdf) => {
     //     res.writeHead(200, {
@@ -31,17 +31,13 @@ httpServer.on('request', (req, res) => {
 
 
     //------------------------------------------------------
-    // Non-blocking/Async IO ( with streams )
+    // Non-blocking/Async IO node's streams
     //------------------------------------------------------
     const readableStream = fs.createReadStream('./PPT/all-levels node.pdf')
     res.writeHead(200, {
         'Content-Type': "application/pdf"
     })
     readableStream.pipe(res);
-
-
-
-
 })
 
 httpServer.listen(3000, () => {
