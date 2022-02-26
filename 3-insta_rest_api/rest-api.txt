@@ -1,0 +1,29 @@
+
+
+e.g - Insta-app
+
+       - photos
+       - comments
+
+----------------------------------------
+how to design & implement rest-api
+----------------------------------------
+
+1-Resource identification in requests 
+
+/api/v1/photos
+/api/v1/photos/{id}
+/api/v1/photos/{id}/comments
+/api/v1/photos/{id}/comments/{id}
+
+2-Resource manipulation through representations
+
+          - application/json
+          - application/xml
+          - ...
+3-Self-descriptive messages ( e.g http-headers )
+
+4-Hypermedia as the engine of application state (HATEOAS) 
+
+
+
