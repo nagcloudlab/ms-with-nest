@@ -1,0 +1,62 @@
+version: "3.8"
+services:
+  product:
+    build:
+      dockerfile: Dockerfile
+      context: ./product
+      target: development
+    volumes:
+      - ./product:/usr/src/app
+    command: npm run start:dev
+    environment: 
+      NODE_ENV: development
+
+  review:
+    build:
+      dockerfile: Dockerfile
+      context: ./review
+      target: development
+    volumes:
+      - ./review:/usr/src/app
+    command: npm run start:dev
+    environment: 
+      NODE_ENV: development
+
+  product-composite:
+    build:
+      dockerfile: Dockerfile
+      context: ./product-composite
+      target: development
+    volumes:
+      - ./product-composite:/usr/src/app
+    command: npm run start:dev
+    environment: 
+      NODE_ENV: development
+    ports:
+      - 7000:7000
+
+  mongodb:
+    image: mongo:4.4.2
+    ports:
+      - "27017:27017"
+    command: mongod
+    healthcheck:
+      test: "mongo --eval 'db.stats().ok'"
+      interval: 5s
+      timeout: 2s
+      retries: 60
+
+  mysql:
+    image: mysql:5.7.32
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpwd
+      - MYSQL_DATABASE=productdb
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pwd
+    healthcheck:
+      test: "/usr/bin/mysql --user=user --password=pwd --execute \"SHOW DATABASES;\""
+      interval: 5s
+      timeout: 2s
+      retries: 60    

@@ -1,0 +1,40 @@
+version: "3.8"
+services:
+  product:
+    build:
+      dockerfile: Dockerfile
+      context: ./product
+      target: development
+    volumes:
+      - ./product:/usr/src/app
+    command: npm run start:dev
+    environment: 
+      NODE_ENV: development
+    # ports:
+    #   - 7001:7001
+
+  review:
+    build:
+      dockerfile: Dockerfile
+      context: ./review
+      target: development
+    volumes:
+      - ./review:/usr/src/app
+    command: npm run start:dev
+    environment: 
+      NODE_ENV: development
+    # ports:
+    #   - 7002:7002
+
+  product-composite:
+    build:
+      dockerfile: Dockerfile
+      context: ./product-composite
+      target: development
+    volumes:
+      - ./product-composite:/usr/src/app
+    command: npm run start:dev
+    environment: 
+      NODE_ENV: development
+    ports:
+      - 7000:7000
